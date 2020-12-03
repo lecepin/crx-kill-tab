@@ -1,3 +1,5 @@
+import "./popup.css";
+
 const enableDom = document.getElementById("enable");
 const timeoutDom = document.getElementById("timeout");
 const click_countDom = document.getElementById("click_count");
