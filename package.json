@@ -1,7 +1,7 @@
 {
   "name": "kill-tab",
   "version": "0.1.0",
-  "description": "My Chrome Extension",
+  "description": "Kill Tab",
   "private": true,
   "scripts": {
     "watch": "webpack --mode=development --watch --config config/webpack.config.js",

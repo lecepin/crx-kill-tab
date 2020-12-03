@@ -1,17 +1,15 @@
-# <img src="public/icons/icon_48.png" width="45" align="left"> Kill Tab
+# <img src="https://img.alicdn.com/tfs/TB1zryS37Y2gK0jSZFgXXc5OFXa-48-48.png" width="45" align="left"> Kill Tab
 
-My Chrome Extension
+快捷关闭浏览器页面。
 
-## Features
+## 特性
 
-- Feature 1
-- Feature 2
+- 定制点击鼠标次数关闭页面：默认 3 次
+- 定制超时时间：默认 1000ms
+- 是否启用：默认启用
 
-## Install
+## 设置
 
-[**Chrome** extension]() <!-- TODO: Add chrome extension link inside parenthesis -->
+点击扩展 icon，出现设置面板，根据需求修改即可。
 
-## Contribution
-
-Suggestions and pull requests are welcomed!.
-
+![](https://img.alicdn.com/tfs/TB14siT34v1gK0jSZFFXXb0sXXa-200-151.jpg)

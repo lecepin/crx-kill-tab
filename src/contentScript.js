@@ -1,43 +1,19 @@
-'use strict';
+chrome.storage.sync.get(
+  { enable: true, timeout: 1000, click_count: 3 },
+  function (config) {
+    const { enable, timeout, click_count } = config;
 
-// Content script file will run in the context of web page.
-// With content script you can manipulate the web pages using
-// Document Object Model (DOM).
-// You can also pass information to the parent extension.
+    enable &&
+      window.addEventListener("click", (e) => {
+        window.__kill_tab_c_count = (window.__kill_tab_c_count || 0) + 1;
+        if (window.__kill_tab_c_count >= click_count) {
+          // window.close();
+          chrome.runtime.sendMessage({ close: true });
+        }
 
-// We execute this script by making an entry in manifest.json file
-// under `content_scripts` property
-
-// For more information on Content Scripts,
-// See https://developer.chrome.com/extensions/content_scripts
-
-// Log `title` of current active web page
-const pageTitle = document.head.getElementsByTagName('title')[0].innerHTML;
-console.log(
-  `Page title is: '${pageTitle}' - evaluated by Chrome extension's 'contentScript.js' file`
-);
-
-// Communicate with background file by sending a message
-chrome.runtime.sendMessage(
-  {
-    type: 'GREETINGS',
-    payload: {
-      message: 'Hello, my name is Con. I am from ContentScript.',
-    },
-  },
-  response => {
-    console.log(response.message);
+        setTimeout(() => {
+          window.__kill_tab_c_count = 0;
+        }, timeout);
+      });
   }
 );
-
-// Listen for message
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.type === 'COUNT') {
-    console.log(`Current count is ${request.payload.count}`);
-  }
-
-  // Send an empty response
-  // See https://github.com/mozilla/webextension-polyfill/issues/130#issuecomment-531531890
-  sendResponse({});
-  return true;
-});
